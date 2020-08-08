@@ -1,4 +1,5 @@
 /.screeps.json
 /.screeps-multimeter.history
 /screeps-multimeter.json
+/.DS_Store
 node_modules
