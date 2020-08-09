@@ -26,7 +26,7 @@ let roleRoadpaver = {
                 creep.say(" Full!");
             }
             let source = creep.pos.findClosestByPath(FIND_SOURCES);
-           // console.log(source);
+           //console.log(source);
             if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source ,{visualizePathStyle: {stroke: '#ffaa00'}});
     //console.log(source);

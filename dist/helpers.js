@@ -20,8 +20,19 @@ let spawnHarvester = () => {
   return roles.Harvester.spawn();
 }
 
+let spawnLogistics = () => {
+  return roles.Logistics.spawn();
+}
+
+let spawnNodeMiner = () => {
+  console.log("Trying to spawn Node Miner..");
+  roles.NodeMiner.spawn();
+}
+
 this.helpers = {
   memoryCleanupCreep,
   spawnVisitor,
-  spawnHarvester
+  spawnHarvester,
+  spawnLogistics,
+  spawnNodeMiner
 }

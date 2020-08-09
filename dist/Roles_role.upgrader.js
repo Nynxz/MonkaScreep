@@ -29,7 +29,7 @@ var roleUpgrader = {
         }
     },
     spawn:function() {
-      if(Game.spawns['Pink'].spawnCreep([WORK, WORK, CARRY, MOVE], 'Upgrader' + Math.floor(Math.random() * 100),
+      if(Game.spawns['Pink'].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], 'Upgrader' + Math.floor(Math.random() * 100),
         {memory: {
           role: 'upgrader'
         }}) == 0) {

@@ -1,11 +1,13 @@
 let roles = require('creepRoles');
-let helpers = require('helpers');
+let utils = require('helpers');
+let info = require('Room_sourcesinfo');
 /*  CONTROLS  */
 
 let  statusLog = 0, spawning = 1;
 
 module.exports.loop = function () {
   memoryCleanupCreep();
+  info.energySources();
 
 //Role Functionss
     let currentHarvesters = 0;
@@ -15,6 +17,8 @@ module.exports.loop = function () {
     let currentRoadpavers = 0;
     let currentRampartMaintainers = 0;
     let currentVisitors = 0;
+    let currentLogistics = 0;
+    let currentNodeMiners = 0;
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
@@ -46,29 +50,40 @@ module.exports.loop = function () {
           roles.Visitor.run(creep);
           currentVisitors++;
         }
+        if(creep.memory.role == 'logistics') {
+          roles.Logistics.run(creep);
+          currentLogistics++;
+        }
+        if(creep.memory.role == 'nodeminer'){
+          roles.NodeMiner.run(creep);
+          currentNodeMiners++;
+        }
     }
 
     if(spawning) {
-      if (currentRampartMaintainers < 1) {
-        roles.RampartMaintainer.spawn();
-      }
-      if (currentVisitors < 0) {
-        roles.Visitor.spawn();
-      }
       if (currentHarvesters < 2) {
         roles.Harvester.spawn();
+      }
+      if (currentRampartMaintainers < 1) {
+        roles.RampartMaintainer.spawn();
       }
       if (currentBuilders < 2) {
         roles.Builder.spawn();
       }
-      if (currentUpgraders < 3) {
+      if (currentUpgraders < 2) {
         roles.Upgrader.spawn();
       }
-      if (currentDecayStop < 2) {
+      if (currentDecayStop < 1) {
         roles.DecayStopper.spawn();
       }
       if (currentRoadpavers < 0) {
         roles.RoadPaver.spawn();
+      }
+      if (currentVisitors < 0) {
+        roles.Visitor.spawn();
+      }
+      if(currentLogistics < 1) {
+        roles.Logistics.spawn();
       }
     }
 
@@ -78,6 +93,9 @@ module.exports.loop = function () {
         console.log("Current Upgraders: " + currentUpgraders);
         console.log("Current Decay Stoppers: " + currentDecayStop);
         console.log("Current Road Pavers: " + currentRoadpavers);
+        console.log("Current Rampart Maintainers: " + currentRampartMaintainers);
+        console.log("Current Visitors: " + currentVisitors);
+        
     }
 }
 //Game.spawns['Pink'].spawnCreep([WORK,WORK, CARRY, CARRY, MOVE, MOVE], 'RoadPaverDX', { memory: {role: 'roadpaver',mining: true}});
