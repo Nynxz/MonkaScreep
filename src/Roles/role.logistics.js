@@ -22,7 +22,7 @@ let roleLogistics = {
         creep.moveTo(spawns_extensions[0]);
       } else if(creep.transfer(spawns_extensions[0], RESOURCE_ENERGY) == ERR_INVALID_TARGET){
         //Merge
-        let containers = creep.room.find(FIND_STRUCTURES, { filter: (structure) => ((structure.structureType == STRUCTURE_CONTAINER) && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)});
+        let containers = creep.room.find(FIND_STRUCTURES, { filter: (structure) => (structure.structureType == STRUCTURE_CONTAINER && structure.store.getFreeCapacity() != 0) });
         if(creep.transfer(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
           creep.moveTo(containers[0]);
         }
@@ -36,8 +36,8 @@ let roleLogistics = {
 
       let containers = creep.room.find(FIND_STRUCTURES, { filter: (structure) => (structure.structureType == STRUCTURE_CONTAINER) && (structure.store.getUsedCapacity(RESOURCE_ENERGY) != 0) })
       //console.log("LOG: " + "Not Empty: " + containers);
-      if (creep.withdraw(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(containers[0]);
+      if (creep.withdraw(containers[2], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(containers[2]);
       }
     }
   },
@@ -45,8 +45,8 @@ let roleLogistics = {
 
 
   spawn: function () {
-    //console.log("Trying to spawn LOG..");
-    if (Game.spawns['Pink'].spawnCreep([CARRY, CARRY, MOVE], 'LogisticsR' + Math.floor(Math.random() * 100), { memory: { role: 'logistics', full: false } }) == 0) {
+    console.log("Trying to spawn LOG..");
+    if (Game.spawns['Pink'].spawnCreep([CARRY, CARRY, CARRY, CARRY, MOVE, MOVE], 'LogisticsR' + Math.floor(Math.random() * 100), { memory: { role: 'logistics', full: false } }) == 0) {
       console.log("Spawning LOG..");
     }
   }

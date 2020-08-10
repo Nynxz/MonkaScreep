@@ -27,12 +27,12 @@ let roleBuilder = {
               }
             }
         } else { //Not Building
-          let manual = 1;
+          let manual = 0;
 
           if(manual == 0 ){
-            let sources = creep.room.find(FIND_STRUCTURES, { filter: { structureType: STRUCTURE_CONTAINER}});
-            if(creep.withdraw(sources[1], RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-              creep.moveTo(sources[1], {visualizePathStyle: {stroke: '#ffaa00'}});
+            let sources = creep.room.find(FIND_STRUCTURES, { filter: (structure) => (structure.structureType == STRUCTURE_CONTAINER) && (structure.store.getUsedCapacity(RESOURCE_ENERGY) > structure.store.getCapacity(RESOURCE_ENERGY) /2)});
+            if(creep.withdraw(sources[0], RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+              creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
             }
           } else {
             let sources = creep.room.find(FIND_SOURCES);
@@ -43,7 +43,7 @@ let roleBuilder = {
         }
     },
     spawn:function() {
-      if(Game.spawns['Pink'].spawnCreep([WORK, WORK, CARRY, MOVE, MOVE], 'Builder' +  Math.floor(Math.random() * 100),
+      if(Game.spawns['Pink'].spawnCreep([WORK, WORK, CARRY,CARRY, MOVE, MOVE], 'Builder' +  Math.floor(Math.random() * 100),
           {memory:{
             role:'builder',
             building: false

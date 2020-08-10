@@ -1,6 +1,6 @@
 let sourcesInfo = {
 
-    energySources:function () {
+    roomStats:function () {
         for(roomName in Game.rooms){//FOR ALL ROOMS OCCUPIED
             //console.log(roomName);
             let room = Game.rooms[roomName];
@@ -12,10 +12,12 @@ let sourcesInfo = {
                 for(i in sources){
                     let source = sources[i];
                     source.memory = room.memory.sources[source.id] = {
-                        currentNodeMinerID: 0
+                        currentNodeMinerID: 0,
                     };
-                    
                 }
+                let containerClosestToController = room.controller.pos.findClosestByPath(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_CONTAINER});
+                room.memory.containerClosestToControllerID = containerClosestToController.id;
+                //console.log(room.memory.containerClosestToControllerID);
             }
         }
     }

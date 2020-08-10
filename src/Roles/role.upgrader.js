@@ -22,9 +22,19 @@ var roleUpgrader = {
             // }
         }
         else {
-            var sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
+            let manual = 0;
+
+            if(manual == 0 ){
+              let closestContainer = Game.getObjectById(creep.room.memory.containerClosestToControllerID);
+              //console.log(sources);
+              if(creep.withdraw(closestContainer, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+                creep.moveTo(closestContainer, {visualizePathStyle: {stroke: '#ffaa00'}});
+              }
+            } else {
+              let sources = creep.room.find(FIND_SOURCES);
+              if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE){
                 creep.moveTo(sources[1], {visualizePathStyle: {stroke: '#ffaa00'}});
+              }
             }
         }
     },

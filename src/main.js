@@ -7,7 +7,7 @@ let  statusLog = 0, spawning = 1;
 
 module.exports.loop = function () {
   memoryCleanupCreep();
-  info.energySources();
+  info.roomStats();
 
 //Role Functionss
     let currentHarvesters = 0;
@@ -82,8 +82,11 @@ module.exports.loop = function () {
       if (currentVisitors < 0) {
         roles.Visitor.spawn();
       }
-      if(currentLogistics < 1) {
+      if(currentLogistics < 3) {
         roles.Logistics.spawn();
+      }
+      if(currentNodeMiners <2){
+        roles.NodeMiner.spawn();
       }
     }
 

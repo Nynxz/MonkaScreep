@@ -11,10 +11,10 @@ let roleHarvester = {
             //console.log(sources);
             if(creep.store.getFreeCapacity() == 0){
                 creep.memory.mining = false;
-                creep.say(" Full!");
+                //creep.say(" Full!");
             }
             if(!creep.memory.pathBlocked){
-                let containers = creep.room.find(FIND_STRUCTURES, { filter: (structure) => (structure.structureType == STRUCTURE_CONTAINER) && (structure.store.getUsedCapacity(RESOURCE_ENERGY) != 0) })
+                let containers = creep.room.find(FIND_STRUCTURES, { filter: (structure) => (structure.structureType == STRUCTURE_CONTAINER) && (structure.store.getUsedCapacity(RESOURCE_ENERGY) > structure.store.getCapacity(RESOURCE_ENERGY) /2)})
                 //console.log("LOG: " + "Not Empty: " + containers);
                 if(creep.withdraw(containers[1], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
                     if(creep.moveTo(containers[1], {visualizePathStyle: {stroke: 'yellow'}}) == -2){
@@ -41,7 +41,7 @@ let roleHarvester = {
             //console.log(energyStorages);
             if(creep.store.getUsedCapacity() == 0) {
                 creep.memory.mining = true;
-                creep.say(' Empty!');
+                //creep.say(' Empty!');
             }
             //console.log(energyStorages);
             //console.log(Game.spawns['Pink'].store.getFreeCapacity(RESOURCE_ENERGY));

@@ -38,6 +38,7 @@ let roleNodeMiner = {
         //IF CREEP is NOT FULL
         if(creep.memory.mining){
             let sourceObject = Game.getObjectById(creep.memory.nodeID); //Translate attached nodeID to object
+            //console.log(creep.harvest(sourceObject));
             if(creep.harvest(sourceObject) == ERR_NOT_IN_RANGE){ //IF CREEP CANNOT MINE
                 creep.moveTo(sourceObject); //MOVE TOWARDS SOURCE
             }
