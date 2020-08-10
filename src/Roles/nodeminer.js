@@ -46,22 +46,33 @@ let roleNodeMiner = {
         //IF Creep is FULL
         } else {
             //FIND CLOSEST CONTAINER to CREEP
-            let container = creep.pos.findClosestByPath(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_CONTAINER && structure.store.getFreeCapacity != 0});
+            //console.log(creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_CONTAINER && structure.store.getFreeCapacity != 0}));
+            let container = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_CONTAINER && structure.store.getFreeCapacity != 0});
             //TRANSFER(deposit) ENERGY into CONTAINER
-            creep.transfer(container, RESOURCE_ENERGY);
+            if(creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+                creep.moveTo(container);
+            }
         }
+    },
+
+    containerInfo:function() {
+        
     },
 
 
     spawn:function() {
-      if(Game.spawns['Pink'].spawnCreep([WORK, WORK, WORK, WORK, CARRY, MOVE], 'NodeMinerR' +  Math.floor(Math.random() * 100),
+        console.log("Trying to spawn Node Miner[4W 1C 1M]");
+      if(Game.spawns['Pink'].spawnCreep([WORK, WORK, WORK, WORK, CARRY, MOVE], 'NodeMiner' + Game.spawns['Pink'].memory.creepCount.nodeMiner,
       {memory:{
         role: 'nodeminer',
         mining: true,
+        containerID: 0,
         attached: false,
         nodeID: 0
+
       }}) == 0){
-          console.log("Spawning NodeMiner..");
+            Game.spawns['Pink'].memory.creepCount.NodeMiner += 1;
+            console.log("Spawning Node Miner..");
       } else {
           return "Not Enough Energy";
       }

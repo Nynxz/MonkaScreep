@@ -9,4 +9,5 @@ module.exports = {
   Upgrader          : require('Roles_role.upgrader'),
   Visitor           : require('Roles_role.visitor'),
   NodeMiner         : require('Roles_nodeminer')
+  
 }

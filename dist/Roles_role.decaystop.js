@@ -43,7 +43,7 @@ let roleDecaystop = {
         }
     },
     spawn:function() {
-      if(Game.spawns['Pink'].spawnCreep([WORK, CARRY,MOVE], 'DecayStopper' + Math.floor(Math.random() * 100), {
+      if(Game.spawns['Pink'].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], 'DecayStopper' + Math.floor(Math.random() * 100), {
           memory: {
             role: 'decaystop',
             mining: true

@@ -13,7 +13,8 @@ This is my super jank code for Screeps, npm stuff for VSCode, autocommits and st
 
 2. You need your own `.screeps.json` in the root
 
-```{
+```
+  {
     "email": "USERNAME/EMAIL",
     "password": PASSWORD",
     "branch": "default",
@@ -25,6 +26,6 @@ This is my super jank code for Screeps, npm stuff for VSCode, autocommits and st
 ## Usage
 
 1. edit your `src`
-2. `grunt` flattens and upload's your code and stuff. 🤷‍♀️
+2. `grunt` in console flattens and upload's your code and stuff. 🤷‍♀️
 
 

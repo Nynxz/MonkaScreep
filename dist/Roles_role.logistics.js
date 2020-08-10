@@ -36,8 +36,8 @@ let roleLogistics = {
 
       let containers = creep.room.find(FIND_STRUCTURES, { filter: (structure) => (structure.structureType == STRUCTURE_CONTAINER) && (structure.store.getUsedCapacity(RESOURCE_ENERGY) != 0) })
       //console.log("LOG: " + "Not Empty: " + containers);
-      if (creep.withdraw(containers[2], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(containers[2]);
+      if (creep.withdraw(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(containers[0]);
       }
     }
   },

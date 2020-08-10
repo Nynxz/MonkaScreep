@@ -3,7 +3,7 @@ let utils = require('helpers');
 let info = require('Room_sourcesinfo');
 /*  CONTROLS  */
 
-let  statusLog = 0, spawning = 1;
+let  statusLog = 0, spawning = 0;
 
 module.exports.loop = function () {
   memoryCleanupCreep();
@@ -61,19 +61,19 @@ module.exports.loop = function () {
     }
 
     if(spawning) {
-      if (currentHarvesters < 2) {
+      if (currentHarvesters < 0) {
         roles.Harvester.spawn();
       }
-      if (currentRampartMaintainers < 1) {
+      if (currentRampartMaintainers < 0) {
         roles.RampartMaintainer.spawn();
       }
-      if (currentBuilders < 2) {
+      if (currentBuilders < 0) {
         roles.Builder.spawn();
       }
-      if (currentUpgraders < 2) {
+      if (currentUpgraders < 0) {
         roles.Upgrader.spawn();
       }
-      if (currentDecayStop < 1) {
+      if (currentDecayStop < 0) {
         roles.DecayStopper.spawn();
       }
       if (currentRoadpavers < 0) {
@@ -82,10 +82,10 @@ module.exports.loop = function () {
       if (currentVisitors < 0) {
         roles.Visitor.spawn();
       }
-      if(currentLogistics < 3) {
+      if(currentLogistics < 0) {
         roles.Logistics.spawn();
       }
-      if(currentNodeMiners <2){
+      if(currentNodeMiners <0){
         roles.NodeMiner.spawn();
       }
     }
@@ -97,7 +97,9 @@ module.exports.loop = function () {
         console.log("Current Decay Stoppers: " + currentDecayStop);
         console.log("Current Road Pavers: " + currentRoadpavers);
         console.log("Current Rampart Maintainers: " + currentRampartMaintainers);
-        console.log("Current Visitors: " + currentVisitors);
+        console.log("Current Visitors: " + currentVisitors);   
+        console.log("Current Logistics: " + currentLogistics);
+        console.log("Current Node Miners: " + currentNodeMiners);   
         
     }
 }

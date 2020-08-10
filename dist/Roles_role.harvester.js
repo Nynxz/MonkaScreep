@@ -13,7 +13,7 @@ let roleHarvester = {
                 creep.memory.mining = false;
                 //creep.say(" Full!");
             }
-            if(!creep.memory.pathBlocked){
+            if(creep.memory.pathBlocked){
                 let containers = creep.room.find(FIND_STRUCTURES, { filter: (structure) => (structure.structureType == STRUCTURE_CONTAINER) && (structure.store.getUsedCapacity(RESOURCE_ENERGY) > structure.store.getCapacity(RESOURCE_ENERGY) /2)})
                 //console.log("LOG: " + "Not Empty: " + containers);
                 if(creep.withdraw(containers[1], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
