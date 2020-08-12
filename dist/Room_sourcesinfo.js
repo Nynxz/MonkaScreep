@@ -12,6 +12,8 @@ let sourcesInfo = {
                 for(i in sources){
                     let source = sources[i];
                     source.memory = room.memory.sources[source.id] = {
+                        posX: source.pos.x,
+                        posY: source.pos.y,
                         currentNodeMinerID: 0,
                     };
                 }

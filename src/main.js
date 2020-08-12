@@ -3,7 +3,7 @@ let utils = require('helpers');
 let info = require('Room_sourcesinfo');
 /*  CONTROLS  */
 
-let  statusLog = 0, spawning = 0;
+let  statusLog = 0, spawning = 1;
 
 module.exports.loop = function () {
   memoryCleanupCreep();
@@ -55,13 +55,13 @@ module.exports.loop = function () {
           currentLogistics++;
         }
         if(creep.memory.role == 'nodeminer'){
-          roles.NodeMiner.run(creep);
+          //roles.NodeMiner.run(creep);
           currentNodeMiners++;
         }
     }
 
     if(spawning) {
-      if (currentHarvesters < 0) {
+      if (currentHarvesters < 1) {
         roles.Harvester.spawn();
       }
       if (currentRampartMaintainers < 0) {
@@ -70,10 +70,10 @@ module.exports.loop = function () {
       if (currentBuilders < 0) {
         roles.Builder.spawn();
       }
-      if (currentUpgraders < 0) {
+      if (currentUpgraders < 2) {
         roles.Upgrader.spawn();
       }
-      if (currentDecayStop < 0) {
+      if (currentDecayStop < 2) {
         roles.DecayStopper.spawn();
       }
       if (currentRoadpavers < 0) {
@@ -82,11 +82,11 @@ module.exports.loop = function () {
       if (currentVisitors < 0) {
         roles.Visitor.spawn();
       }
-      if(currentLogistics < 0) {
+      if(currentLogistics < 1) {
         roles.Logistics.spawn();
       }
-      if(currentNodeMiners <0){
-        roles.NodeMiner.spawn();
+      if(currentNodeMiners < 0){
+       // roles.NodeMiner.spawn();
       }
     }
 

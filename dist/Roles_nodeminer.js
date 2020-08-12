@@ -61,7 +61,7 @@ let roleNodeMiner = {
 
 
     spawn:function() {
-        console.log("Trying to spawn Node Miner[4W 1C 1M]");
+        //console.log("Trying to spawn Node Miner[4W 1C 1M]");
       if(Game.spawns['Pink'].spawnCreep([WORK, WORK, WORK, WORK, CARRY, MOVE], 'NodeMiner' + Game.spawns['Pink'].memory.creepCount.nodeMiner,
       {memory:{
         role: 'nodeminer',

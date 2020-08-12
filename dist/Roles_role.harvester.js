@@ -52,7 +52,7 @@ let roleHarvester = {
         }
     },
     spawn:function(){
-      if(Game.spawns['Pink'].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], 'Harvester' +  Math.floor(Math.random() * 100),
+      if(Game.spawns['Pink'].spawnCreep([WORK, CARRY, MOVE], 'Harvester' +  Math.floor(Math.random() * 100),
       {memory:{
         role: 'harvester',
         mining: true,
