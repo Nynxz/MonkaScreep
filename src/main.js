@@ -55,7 +55,7 @@ module.exports.loop = function () {
           currentLogistics++;
         }
         if(creep.memory.role == 'nodeminer'){
-          //roles.NodeMiner.run(creep);
+          roles.NodeMiner.run(creep);
           currentNodeMiners++;
         }
     }
@@ -85,7 +85,7 @@ module.exports.loop = function () {
       if(currentLogistics < 1) {
         roles.Logistics.spawn();
       }
-      if(currentNodeMiners <2){
+      if(currentNodeMiners < 2){
         roles.NodeMiner.spawn();
       }
     }
