@@ -8,7 +8,7 @@ let  statusLog = 0, spawning = 0;
 module.exports.loop = function () {
   memoryCleanupCreep();
   info.roomStats();
-
+  console.log('test');
 //Role Functionss
     let currentHarvesters = 0;
     let currentUpgraders = 0;

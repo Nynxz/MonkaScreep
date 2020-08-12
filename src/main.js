@@ -86,7 +86,7 @@ module.exports.loop = function () {
         roles.Logistics.spawn();
       }
       if(currentNodeMiners <0){
-        roles.NodeMiner.spawn();
+        //roles.NodeMiner.spawn();
       }
     }
 
