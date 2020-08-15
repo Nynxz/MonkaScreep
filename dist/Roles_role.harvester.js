@@ -7,6 +7,7 @@ let roleHarvester = {
         //console.log(      creep.room.find(FIND_STRUCTURES));
 
         if(creep.memory.mining){
+            creep.memory.pathBlocked = true;
             let sources = creep.room.find(FIND_SOURCES);
             //console.log(sources);
             if(creep.store.getFreeCapacity() == 0){

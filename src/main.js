@@ -61,7 +61,7 @@ module.exports.loop = function () {
     }
 
     if(spawning) {
-      if (currentHarvesters < 1) {
+      if (currentHarvesters < 2) {
         roles.Harvester.spawn();
       }
       if (currentRampartMaintainers < 0) {
